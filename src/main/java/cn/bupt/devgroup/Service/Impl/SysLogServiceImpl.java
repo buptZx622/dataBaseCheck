@@ -1,9 +1,12 @@
 package cn.bupt.devgroup.Service.Impl;
 
+import cn.bupt.devgroup.Mapper.SysLogMapper;
 import cn.bupt.devgroup.Model.SysOperateLog;
 import cn.bupt.devgroup.Service.SysLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @author zhuangxu
@@ -12,9 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class SysLogServiceImpl implements SysLogService {
+    @Resource
+    SysLogMapper sysLogMapper;
 
     @Override
     public int insertSysLog(SysOperateLog sysOperateLog) {
-        return 0;
+        return sysLogMapper.insertSysLog(sysOperateLog);
     }
 }
