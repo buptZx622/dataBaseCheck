@@ -5,3 +5,4 @@
  - aop 记录操作日志
  - 添加springBoot jsp依赖并测试
  - 测试 shardingjdbc 分库分表
+ - 测试mysql遍历
