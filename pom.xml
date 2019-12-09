@@ -19,6 +19,8 @@
     <lombok.version>1.18.6</lombok.version>
     <commons-lang.version>2.6</commons-lang.version>
     <commons-lang3.version>3.7</commons-lang3.version>
+    <shardingsphere.version>3.1.0</shardingsphere.version>
+    <druid.version>1.1.12</druid.version>
   </properties>
 
   <dependencies>
@@ -36,6 +38,16 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.shardingsphere</groupId>
+      <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+      <version>${shardingsphere.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>

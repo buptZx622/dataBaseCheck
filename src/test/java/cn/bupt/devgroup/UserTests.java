@@ -17,7 +17,7 @@ public class UserTests {
     UserService userService;
     @Test
     public void testLoginUser(){
-        User user= User.builder().userName("test").password("123456").build();
+        User user= User.builder().userName("test").password("1979").build();
         userService.loginUser(user);
     }
     @Test
