@@ -9,4 +9,10 @@
   <update id="removeUser" parameterType="java.lang.String">
     update user_table set `status`=0 where `userName`=#{userName}
   </update>
+<!--  <select id="showDataBase" resultType="java.lang.String">-->
+<!--    select * from #{tablseName}-->
+<!--  </select>-->
+  <select id="selectAll" parameterType="java.lang.String" resultType="java.util.Map">
+    select * from ${tableName};
+  </select>
 </mapper>
