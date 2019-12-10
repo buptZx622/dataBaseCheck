@@ -1,20 +1,13 @@
-package cn.bupt.devgroup;
+package cn.bupt.devgroup.Util;
 
-import cn.bupt.devgroup.Mapper.UserMapper;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
 import java.sql.*;
 import java.util.*;
 
 /**
  * @author zhuangxu
- * @date 2019/12/9 17:49
+ * @date 2019/12/10 9:54
  */
-@SpringBootTest
-public class MysqlTest {
-
+public class SqlUtil {
     static Map<String, String> map;
 
     static {
@@ -23,31 +16,29 @@ public class MysqlTest {
         map.put("mysql", "");
         map.put("performance_schema", "");
     }
-
-    @Resource
-    UserMapper userMapper;
-
-    @Test
-    public void testMysqlErgodic() {
-        System.out.println(userMapper.selectAll("user_table_0"));
-    }
-
-    @Test
-    public void testQudong() throws SQLException, ClassNotFoundException {
-        Connection con = null;//链接接口
-        Statement stmt = null;//发送SQL语句接口
-        ResultSet rs = null;//返回结果集接口
+    /**
+     * Mysql 遍历方法
+     * userName:数据库用户名，password:密码
+     */
+    public static void ergodicMysql(String userNanme,String password) throws ClassNotFoundException,SQLException{
+        //链接接口
+        Connection con = null;
+        //发送SQL语句接口
+        Statement stmt = null;
+        //返回结果集接口
+        ResultSet rs = null;
         PreparedStatement ps = null;
         Class.forName("com.mysql.jdbc.Driver");
         String URL = "jdbc:mysql://127.0.0.1:3306/databaseinfo?useUnicode=true&serverTimezone=UTC&characterEncoding=utf8";
-        con = DriverManager.getConnection(URL, "root", "");
+        con = DriverManager.getConnection(URL, userNanme, password);
         stmt = con.createStatement();
         //查询数据库中表的值，并且打印出来
         rs = stmt.executeQuery("show databases");
         ResultSet rsTable = null;
         List<String> dataBaseList = new ArrayList<>();
         ResultSetMetaData metaData = rs.getMetaData();
-        while (rs.next()) { //next()方法控制行数，一行一行读出返回结果集，直到null
+        //next()方法控制行数，一行一行读出返回结果集，直到null
+        while (rs.next()) {
             for (int i = 1; i <= metaData.getColumnCount() && !map.containsKey(rs.getString(i)); i++) {
                 dataBaseList.add(rs.getString(i));
             }
